@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>DMAds</title>
+  {% load static %}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href ="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel = "stylesheet" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <style type="text/css">
+
+    body {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url("{% static 'img/backgrounds/wdowinsurance.jpg' %}");
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{% static 'img/backgrounds/wdowinsurance.jpg' %}");
+      background-size: cover;
+      background-position: center;
+    }
+
+    html,
+    body,
+    header,
+    .carousel {
+      min-height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        min-height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="/wdowinsurance/">
+        <span class="font-weight-bold">WdowIn</span>surance
+      </a>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  {% if messages %}
+  {% for message in messages %}
+  {% if 'info' in message.tags %}
+  <div class="fixed-top mt-5">
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-4" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-12 col-md-6 col-lg-8">
+
+          <h1 class="text-white font-weight-bold mt-5 ml-5">Better Coverage,</h1>
+
+          <h1 class="text-white font-weight-bold ml-5">Lower Rates</h1>
+
+          <p class="text-white mt-5 ml-5">Doctors, Nurses, Engineers, Veterinarians, CPAs, Scientists, & Dermatologists save more on insurance.</p>
+
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+          <!--Card-->
+          <div class="card mt-5">
+
+            <form action="/wdowinsurance/get_started/" method="POST" class="card-body">
+              {% csrf_token %}
+
+              {% if messages %}
+              <ul class="messages text-danger">
+                {% for message in messages %}
+                {% if 'warning' in message.tags %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+              {% endif %}
+
+              <!--firstName-->
+              <div class="md-form">
+                <input type="text" id="first_name" class="form-control" name="first_name">
+                <label for="firstName" class="">First name</label>
+              </div>
+
+              <!--lastName-->
+              <div class="md-form">
+                <input type="text" id="last_name" class="form-control" name="last_name">
+                <label for="lastName" class="">Last name</label>
+              </div>
+
+              <!--email-->
+              <div class="md-form">
+                <input type="text" id="email" class="form-control" name="email">
+                <label for="email" class="">Email</label>
+              </div>
+
+              <!--phone number-->
+              <div class="md-form">
+                <input type="text" id="phone_number" class="form-control" name="phone_number">
+                <label for="phone_number" class="">Phone Number</label>
+              </div>
+
+              <!--Occupation-->
+              <div class="md-form">
+                <input type="text" id="occupation" class="form-control" name="occupation">
+                <label for="occupation" class="">Occupation (Optional)</label>
+              </div>
+
+              <p class="text-center">Savings are just 1 click away</p>
+
+              <button class="btn btn-danger btn-lg btn-block" type="submit">Get Started</button>
+            </form>
+
+          </div>
+        
+        </div>
+      
+      </div>
+
+      <div class="row">
+
+        <div class="col-12">
+
+          <h2 class="text-center text-white font-weight-bold mt-5 mb-3">We've got you covered</h2>
+        
+        </div>
+      
+      </div>
+
+      <div class="row d-flex justify-content-around">
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Auto</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/002-sedan.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Home</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/003-home.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Life</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/004-heart.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Rental</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/005-furnitures.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Business</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/006-id-card.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Motorcycle</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/007-motorbike.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Recreational</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/008-boat.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Condo</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/001-building.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+        <div class="col-4 col-md-2 col-xl-1">
+
+          <h5 class="text-center text-white">Umbrella</h5>
+
+          <div class="square-image m-2">
+            
+            <img src="{% static 'img/logo/009-umbrella.png' %}" class="p-4">
+          
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+
+</body>
+
+</html>
